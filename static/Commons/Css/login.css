@@ -1,0 +1,151 @@
+
+    .login_ground{
+        width: 100%;
+        min-height: 1000px;
+        background: url("/static/Commons/Images/body_bg_login.jpg");
+        background-repeat: no-repeat;
+        background-color: #d4d5e0;
+    }
+    .login_main{
+        background-color: rgba(36,61,89,0.25);
+        width: 1000px;
+        margin: 50px auto;
+        overflow: auto;
+    }
+    .login_main .WB_left_nav{
+        width: 150px;
+        position: fixed;
+    }
+    .WB_left_nav .item{
+        margin-bottom: 15px;
+
+    }
+    .login_main .right{
+        float: left;
+        width: 850px;
+        display: inline-block;
+        min-height: 700px;
+        float: right;
+
+    }
+    .WB_frame_c{
+        width: 600px;
+        margin-right: 10px;
+        display: inline-block;
+
+    }
+    .WB_frame_cc{
+        width: 600px;
+        margin-right: 10px;
+        display: inline-block;
+
+    }
+    .WB_frame_c .WB_cardwrap{
+        width: 100%;
+        background: #fff8bf;
+        position: relative;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        border-radius: 2px;
+    }
+    .WB_frame_cc.WB_cardwrap{
+        width: 100%;
+        background: #fff8bf;
+        position: relative;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        border-radius: 2px;
+    }
+    a{
+        text-decoration: none;
+    }
+    div{
+        margin: 0;
+        padding: 0;
+    }
+    .WB_frame_c .WB_cardwrap .ficon_note {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #eb7350;
+        font-size: 12px;
+    }
+    .unlogin_notes .closed{
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        position: absolute;
+        top: 0px;
+        right: 5px;
+    }
+    .unlogin_notes .closed {
+        color: #696e78;
+        font-size: 12px;
+        font-family: "Meiryo UI";
+        font-style: normal;
+        font-weight: normal;
+    }
+    .WB_main_r{
+        width: 230px;
+        min-height: 300px;
+        margin-right: 10px;
+        position: relative;
+        display: inline-block;
+        float: right;
+        background-color: #fff;
+    }
+    .login_box .sp_gap a{
+        font-weight: bold;
+        font-size: 14px;
+        color: #000;
+    }
+    .login_box .sp_gap{
+        margin-left: 25px;
+
+    }
+    .login_box .item1{
+        margin-top: 15px;
+        padding: 0 15px 0 15px;
+    }
+    .login_box .item2{
+        margin-top: 10px;
+        padding: 0 15px 0 15px;
+    }
+
+    .input_wrap{
+        height: 28px;
+        width: 100%;
+        padding:2px 0;
+        border:1px solid #ccc;
+        border-radius:2px;
+    }
+.S_txt2{
+    color: #808080;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: normal;
+    }
+
+.submit_box{
+    margin-top: 15px;
+    height: 34px;
+    width: 200px;
+    }
+.submit_box .submit_box_inner{
+    padding: 2px 0;
+    border: 1px solid #eb7350;
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    background-color: #ff8140;
+    line-height: 34px;
+    }
+.submit_box a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    }
+.submit_box_inner_in{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    }

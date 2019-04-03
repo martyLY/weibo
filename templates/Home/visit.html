@@ -1,0 +1,573 @@
+{% extends "Layout/_layout.html" %}
+{% block css %}
+
+    <link rel="stylesheet" href="/static/Commons/Css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/face.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/index.css">
+
+{% endblock %}
+{% block body %}
+    <div class="head_content">
+    <div class="wb_logo">
+        <a href="/index/"><img src="/static/Commons/Images/WB_logo.png" alt=""></a>
+    </div>
+    <form method="POST" action="/search/">
+           {% csrf_token %}
+
+    </form>
+ <div class="wb_menu">
+                <div class="gn_nav">
+                    <ul>
+                        <li>
+                            <a href="/visit/">
+                                <span class="ico fa fa-home"></span>
+                                <span>首页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="ico fa fa-compass"></span>
+                                <span>发现</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login/">
+                                <span class="ico fa fa-home"></span>
+                                <span>退出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="gn_set">
+                    <div class="gn_set_list">
+                        <a href="/message/">
+                            <span class="fa fa-envelope"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="gn_set_list">
+                        <a href="#">
+                            <span class="fa fa-cog"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="gn_set_list">
+                        <a href="#">
+                            <span class="fa fa-pencil-square"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+</div>
+
+    <div class="wb_main">
+        <div class="content">
+            <div class="left">
+                <div class="WB_left_nav">
+                    <div class="lev_Box">
+                        <h3>
+                            <a href="#">
+                                <span>首页</span>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+                <!--div class="WB_left_nav">
+                    <div class="lev_Box">
+                        <h3>
+                            <a href="#">
+                                <span>我的收藏</span>
+                            </a>
+                        </h3>
+                    </div>
+                </div-->
+                <!--div class="WB_left_nav">
+                    <div class="lev_Box">
+                        <h3>
+                            <a href="#">
+                                <span>我的赞</span>
+                            </a>
+                        </h3>
+                    </div>
+                </div-->
+            </div>
+            <div class="center">
+                  <div class="WB_text clearfix">
+                </div>
+                {# 图片上传功能 #}
+
+                {# 发布类型 #}
+                <!--div class="layer_menu_list hide" style="position: absolute; z-index: 29999; outline: none; left: 380px; top: 150px;">
+                    <ul>
+                        <li action-type="select" rank="0" class="">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-globe fa-fw fa-lg"></i>
+                                公开
+                            </a>
+                        </li>
+                        <li action-type="select" rank="1" class="">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-heart fa-fw fa-lg"></i>
+                                好友圈
+                            </a>
+                        </li>
+                        <li action-type="select" rank="2" class="">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-lock fa-fw fa-lg"></i>
+                                仅自己可见
+                            </a>
+                        </li>
+                        <li class="line"><hr></li>
+                        <li action-type="select" rank="3" class="">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-user-plus fa-fw fa-lg"></i>
+                                群可见
+                            </a>
+                        </li>
+                    </ul>
+                </div-->
+
+                <div class="WB_cardwrap">
+                    <div class="WB_cardwrap_b hide" style="color: red;" onclick="LoadNewWeibo();">
+                        你有<span id="new_wb_notify_bar">0</span>条微博，点击查看
+                    </div>
+                </div>
+                <div class="WB_text clearfix" id="WB_text">
+
+
+                </div>
+
+                <div class="wb_list" id="wb_list">
+                    <div  id="wb_item_test"></div>
+                </div>
+                 <a href="/index/?nextpage=1">
+
+                                <span class="next_page_xiao">上一页</span>
+                            </a>
+                <a href="/index/?nextpage=2">
+                                <span>下一页</span>
+                            </a>
+
+            </div>
+            <div class="right">
+                <div class="up">
+                    <div class="headpic">
+                        <a>
+                            <img class="W_face_radius" src="/static/Commons/Images/visitorpic.png" width="60" height="60" >
+                        </a>
+                    </div>
+                </div>
+                <div class="down">
+                    <div class="nameBox" >
+                        <a href="/visit/" class="searchname"  onmouseover="this.style.color='#ff8140';" onmouseout="this.style.color='';">游客</a>
+                        <a href="javascript:void(0)">
+                            <i class="W_icon icon_member_dis"></i>
+                        </a>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <strong>0</strong>
+                                <span>关注</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <strong>0</strong>
+                                <span>粉丝</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <strong>0</strong>
+                                <span>微博</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+    // jquery.qqFace.js用到$.browser,这个api从jQuery1.9开始就正式废除，js代码里只要用到$.browser就会报这个错,解决如下
+        jQuery.browser={};(function(){jQuery.browser.msie=false; jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)./)){ jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+    </script>
+    <script type="text/javascript" src="/static/Commons/JavaScript/jquery.qqFace.js"></script>
+    <script type="text/javascript">
+
+    //查看结果
+        function replace_em(str){
+            //alert("进入了替换表情");
+            str = str.replace(/\</g,'&lt;');
+            str = str.replace(/\>/g,'&gt;');
+            str = str.replace(/\n/g,'<br/>');
+            str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/static/Commons/Plugins/arclist/$1.gif" border="0" />');
+            return str;
+        };
+
+    //输入字数限制
+
+        function getStrleng(str){
+            myLen =0;
+            i=0;
+            for(;(i<str.length)&&(myLen<=maxstrlen*2);i++){
+                if(str.charCodeAt(i)>0&&str.charCodeAt(i)<128)
+                myLen++;
+                else
+                myLen+=2;
+            };
+            return myLen;
+        };
+
+        // 图片上传
+
+
+
+
+        // 搜索框
+
+
+        // 发布类型
+
+
+
+        // 获取新微博数量
+
+        function LoadNewWeiboCount() {
+            $.ajax({
+                url: '/get_new_wb_count/',
+                type: "GET",
+                dataType: 'JSON',
+                data: {'user_id': {{ user_id }} },
+                success: function(callback){
+                    if (callback.new_wb_count > 0) {
+                        $('#new_wb_notify_bar').text(callback.new_wb_count);
+                        $('#new_wb_notify_bar').parent().removeClass('hide');
+                    }
+                }
+            })
+        }
+        // 拉取新微博
+        function LoadNewWeibo() {
+            $.ajax({
+                url: '/get_new_wb/',
+                data: {'user_id': {{ user_id }}},
+                dataType: 'json',
+                type: 'GET',
+                success: function(callback){
+                    console.log(callback.new_wb_list, typeof callback.new_wb_list)
+                    var wb_item_template = $(".wb_item").filter(".hide")
+                    for (i in callback.new_wb_list) {
+                        alert("循环load");
+                        var wb_item = callback.new_wb_list[i];
+                        var formatted_wb_test = replace_em(wb_item['content'] ) ; //替换qq表情
+                        wb_item_template.find(".wb_item_content").html(  "<div>" + formatted_wb_test + "</div>" );
+                        var img_box = ['<div style="display:inline-block">',]
+                        for (j in wb_item.pictures) {
+                                img_box.push('<img style="height:150px; max-width:540px; border: 1px solid #000; margin: 5px" src="/static/Uploads/'+ wb_item.user_id +'/' + wb_item.wb_id + '/' + wb_item.pictures[i] + '">');
+                            wb_item['pictures'][i]
+                        }
+                        for (i in wb_item.pictures){
+                            img_box.push('<img style="height:150px; max-width:540px; border: 1px solid #000; margin: 5px" src="/static/uploads/'+ wb_item.user_id +'">');
+                        }
+                        img_box.push("</div>");
+                        var img_box_div = img_box.join(' ');
+                        wb_item_template.find(".wb_item_content").append(img_box_div);
+                        $('.wb_list').prepend(wb_item_template.clone().removeClass("hide"));
+                    }
+                }
+            })
+        }
+
+
+        // 微博发布
+
+        function login(){
+        var user = $("#user").val();
+        var passwd = $("#password").val();
+        var data = {};
+        data['user'] = user;
+        data['passwd'] = passwd;
+        var post_data_str = JSON.stringify(data);
+        $.ajax({
+            url: '/get_old_wb/',
+            type: 'GET',
+            data: {'post_data': post_data_str},
+            dataType: 'json',
+            success: function (arg){
+                if(arg.status){
+                    location.href='/index/'
+                }else {
+                    alert(arg.message);
+                }
+            }
+        });
+    }
+
+     function Comment(id) {
+            //alert("进入commment");
+            //alert(id);
+            var cp=document.getElementById(id);
+
+            var cpchild=cp.childNodes;
+            //if(cpchild.length==0)
+              //  alert("empty");
+            console.log(cpchild);
+            console.log(cp);
+            $.ajax({
+                url: '/get_comment/?tid='+
+                    id,
+                data: {'user_id': {{ user_id }}},
+                dataType:'JSON',
+                type: 'GET',
+                success: function(callback){
+                    //alert("进入插入评论区");
+                    //alert(JSON.stringify(callback));
+                    if(cpchild.length==0)
+                    {
+                        for (var i in callback) {
+                        var str;
+                           if(callback[i].fields.p_comment==1)
+                           {
+                                str=
+                            "<div style='margin-bottom: 10px' class='wb_item' id="+
+                                callback[i].fields.user+"comment"+
+                            ">"+
+                            "<div class='wb_item_info'>"+
+                              callback[i].fields.name+
+                            "</div>"+
+                            "<div class='wb_item_content'>"+
+                                    replace_em(callback[i].fields.comment)+
+
+
+                                    "<div class='comment_follow'"+
+                                ">"+
+                                "<div id="+
+                                    callback[i].pk+
+                                ">"+
+                                "</div>"+
+                                "</div>"+
+                              "</div>"+
+                        "<hr/>";
+                           }
+                           else
+                           {
+                                str=
+                            "<div style='margin-bottom: 10px' class='wb_item' id="+
+                                callback[i].fields.user+"comment"+
+                            ">"+
+                            "<div class='wb_item_info'>"+
+                                        "#"+
+                              callback[i].fields.name+
+                                        " 回复："+
+                                        callback[i].fields.parent_name+
+                            "</div>"+
+                            "<div class='wb_item_content'>"+
+                                    replace_em(callback[i].fields.comment)+
+                              "</div>"+
+                        "<hr/>";
+                           }
+                        //alert(i);
+                        //alert("逐条显示拉取微博信息");
+                        //console.log(JSON.stringify(callback[i]));
+                        //alert("append之前");
+                        var copy=cp.innerHTML;
+                        console.log(str);
+                        //alert("中间");
+                        console.log(copy);
+                        cp.innerHTML=copy+str;
+                        //alert("append之后");
+
+                    }
+                    var edit=
+                    "<div class='wb_search'>"+
+
+                    "</div>";
+                        var copy=cp.innerHTML;
+                        cp.innerHTML=copy+edit;
+
+                    }
+                    else
+                    {
+                        window.location.href ="/visit/";
+                     //   document.parentNode.removeChild(cp.childNodes);
+                    }
+                }
+            })
+            //LoadNewWeibo();
+        }
+        function LoadoldWeibo() {
+            //alert("加载所有微博");
+            $.ajax({
+                url: '/get_old_wb/',
+                data: {'user_id': {{ user_id }}},
+                dataType:'JSON',
+                type: 'GET',
+                success: function(callback){
+                    var img_info;
+                    //alert(JSON.stringify(callback))
+                    var wb_item_template = $(".wb_item").filter(".hide")
+                    for (var i in callback) {
+                        var str;
+                        //alert(i);
+                        //alert("逐条显示拉取微博信息");
+                        console.log(JSON.stringify(callback[i]));
+                        if(callback[i].fields.pictures_link_id!=""&&callback[i].fields.pictures_link_id!=null)
+                        {
+                             img_info = "<div style='display:inline-block'>" +
+    "<img style='height:150px; max-width:540px; border: 1px solid #000; margin: 5px' src='/static/Uploads/1"+
+    "/temp/"+
+    callback[i].fields.pictures_link_id+
+    "'></div>";
+
+
+                             console.log(img_info);
+                        }
+                        else
+                            img_info="";
+
+                     str=
+                    "<div style='margin-bottom: 10px' class='wb_item'>"+
+                        "<div class='wb_face wb_item_float'>"+
+                            "<img src='/static/Commons/Images/touxiang.png'>"+
+                        "</div>"+
+                        "<div class='wb_item_detail wb_item_float '>"+
+                            "<div class='wb_item_info'>"+
+                              callback[i].fields.name+
+                            "</div>"+
+                            "<div class='wb_item_from'>"+
+                                "今天 来自iphone 7 Plus"+
+                            "</div>"+
+                            "<div class='wb_item_content'>"+
+                                    replace_em(callback[i].fields.text)+
+                                "</div>"+
+                             img_info+
+                              "</div>"+
+                        "<div class='clearfix'>"+
+                        "</div>"+
+                        "<hr/>"+
+                        "<div class='wb_item_bottom'>"+
+                            "<ul>"+
+                                "<li style='margin-left: 5px' onclick='Keep(this);'>"+
+                                    "<i class='fa fa-star-o' aria-hidden='true'>"+
+                        "</i>&nbsp;"+'收藏'+
+                                "</li>"+
+                                "<li onclick='Forward(this);'>"+
+                                    "<i class='fa fa-external-link' aria-hidden='true'></i>&nbsp;"+
+                                    "<em>"+0+"</em>"+
+                                "</li>"+
+                                "<li onclick='Comment(" +
+                         callback[i].pk+
+                    ")'>"+
+                                    "<i class='fa fa-commenting-o' aria-hidden='true'>"+
+                                    "</i>&nbsp;"+
+                                    "<em>"+
+                         callback[i].fields.hot+
+                         "</em>"+
+                                "</li>"+
+                                "<li onclick='Favor(this);'>"+
+                                    "<i class='fa fa-thumbs-o-up' aria-hidden='true'>"+
+                        "</i>&nbsp;"+
+                                    "<em>"+0+"</em>"+
+                                "</li>"+
+                            "</ul>"+
+                        "</div>"+
+                    "</div>"+
+                              "<div id=" +
+                         callback[i].pk+
+                    "></div>"+
+                    "<div style='margin-bottom: 10px' class='wb_item hide'>"+
+                        "<div class='wb_face wb_item_float'>"+
+                            "<img src='/static/Commons/Images/touxiang.jpg'>"+
+                        "</div>"+
+                        "<div class='wb_item_detail wb_item_float '>"+
+                            "<div class='wb_item_info'>"+
+                                callback[i].pk+
+                            "</div>"+
+                            "<div class='wb_item_from'>"+
+                                "10min前来自iphone7Plus"+
+                            "</div>"+
+                            "<div class='wb_item_content'>"+
+                             replace_em(callback[i].fields.text)+
+                            "</div>"+
+                        "</div>"+
+                        "<div class='clearfix'>"+
+                        "</div>"+
+                        "<hr/>"+
+                        "<div class='wb_item_bottom'>"+
+                            "<ul>"+
+                                "<li style=margin-left: 5px' onclick='Keep(this);'>"+
+                                    "<i class='fa fa-star-o' aria-hidden='true'>"+
+                    "</i>&nbsp;"+'收藏'+
+                                "</li>"+
+                                "<li onclick='Forward(this);'>"+
+                                    "<i class='fa fa-external-link' aria-hidden='true'>"+
+                    "</i>&nbsp;"+
+                                    "<em>"+0+"</em>"+
+                                "</li>"+
+                                "<li onclick='Comment(" +
+                         callback[i].fields.name+
+                    ")'>"+
+                                    "<i class='fa fa-commenting-o' aria-hidden='true'>"+"</i>&nbsp;"+
+                                    "<em>"+
+                             callback[i].fields.hot+
+                         "</em>"+
+                                "</li>"+
+                                "<li onclick='Favor(this);'>"+
+                                    "<i class='fa fa-thumbs-o-up' aria-hidden='true'>"+"</i>&nbsp;"+
+                                    "<em>"+0+"</em>"+
+                                "</li>"+
+                            "</ul>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>"+
+                             "<div style='margin-bottom: 10px' class='wb_item' id="+
+                                callback[i].pk+"comment"+
+                            ">"+
+                             "</div>"+
+                             "<div class='wb_search' id="+
+                         callback[i].pk+"editbox"+
+                         ">"+
+                             "</div>";
+
+                             ;
+
+
+
+                        $("#wb_item_test").append(str);
+
+                    }
+                }
+            })
+            //LoadNewWeibo();
+        }
+        function getJsonLength(json){
+        var length = 0;
+        for(var attr in json){
+            length++;
+        }
+        return length;
+       }
+       function Home(){
+            $.ajax({
+           type:"POST",
+           url: '/home/',
+           async:false,//同步：意思是当有返回值以后才会进行后面的js程序。
+           data:{'user_id': {{ user_id }} },//请求需要发送的处理数据
+           success:function(){
+              //if (msg) {//根据返回值进行跳转
+                  window.location.href = '/home/';
+             //  }
+           }
+       });
+       }
+    </script>
+{% endblock %}

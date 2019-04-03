@@ -1,0 +1,36 @@
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>重置密码</title>
+    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
+    <link rel="stylesheet" href="/static/Commons/Css/other.css">
+
+
+</head>
+<body>
+<div class="cover_wrap">
+    <div class="flex-center">
+        <div class="container">
+            <div class="flex-center">
+                <div class="unit-1-2 unit-1-on-mobile">
+
+                     <h1>忘记密码</h1>
+                    <img src="/static/Commons/Images/weibo-logo.png" width=9% height=6% style="position:absolute; left:56%; top:3.5%; ">
+                    <form class="form" action="#" method="post">
+                        {% csrf_token %}
+                        <br/><br/>
+                        <label> 输 入 邮 箱:</label><input type="email" name='email' id="email" class="form-control" value="" style="width:100%" required >
+                        <br/><br/>
+                        <h2>{{ note }}</h2>
+                        <br/><br/>
+                        <button type="submit" class="btn btn-primary btn-block">发送验证码</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>>
+</body>
+</html>

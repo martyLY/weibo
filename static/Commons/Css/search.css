@@ -1,0 +1,94 @@
+	.S_main{
+            margin: 0;
+            background-image:url(/static/Commons/Images/body_repeat_v6.png)
+        }
+       .logo_img{
+            display: block;
+            background: url(/static/Commons/Images/search_logo.png)no-repeat;
+            width: 239px;
+            height: 70px;
+        }
+        .s_main_head{
+            margin: 0 auto;
+
+            width: 1100px;
+            height: 1000px;
+            position: relative;
+        }
+        .S_main_bg{
+            width: 800px;
+            height: 120px;
+
+
+        }
+        .search_img_class{
+            float: left;
+
+            height: 60px;
+            width: 800px;
+
+        }
+        .search_head_img{
+            float: left;
+            padding: 13px 0 0 3px;
+
+        }
+        .clearfix {
+            display: block;
+        }
+        .search_class{
+            float: left;
+            margin-left: -80px;
+            padding: 13px 0 0 3px;
+
+        }
+        .search_class li a{
+            margin-right: 30px;
+            color: white;
+        }
+        .search_refer_box{
+            float: left;
+            width: 800px;
+            height: 50px;
+
+
+        }
+        .search_refer{
+            float: right;
+        }
+        .input_Box{
+            float: left;
+            width: 700px;
+            height: 30px;
+        }
+
+        .searchBtn{
+            display: block;
+            width: 80px;
+            height: 35px;
+            background: dodgerblue;
+            color: white;
+            text-align: center;
+            line-height: 35px
+        }
+        .rest_choice{
+            height: 120px;
+            width: 280px;
+
+            position:absolute;
+            top: 0;
+            right: 0;
+        }
+        .rest_choice a{
+            float: left;
+            color: white;
+            display: block;
+            margin-left: 15px;
+            line-height: 165px;
+        }
+
+        .searchname{
+            border-style: none;
+            background-color: Transparent;
+            font-size: 14px;
+        }

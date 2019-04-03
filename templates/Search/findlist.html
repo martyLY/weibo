@@ -1,0 +1,124 @@
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/findlist.css">
+
+{% endblock %}
+
+
+{% block body %}
+<body class="S_main">
+    <div class="s_main_head">
+        <div class="S_main_bg">
+            <div class="search_img_class">
+                <div class="search_head_img">
+                   <a suda-data  ="key=tblog_search_weibo&amp;value=weibo_logo" href="/?Refer=STopic_icon" class="logo_img"></a>
+                </div>
+                <ul class="search_class  clearfix">
+                <li style="list-style:none;">
+                    <a>综合</a>
+                    <a>找人</a>
+                    <a>图片</a>
+                    <a>兴趣部落</a>
+                </li>
+            </ul>
+            </div>
+            <form action="/search/"  method="POST" >
+            {% csrf_token %}
+            <div class="search_refer_box">
+
+                <div  class="search_Box Box_1">
+                    <input type="text" name="text" value="" placeholder={{ text }} class="input_Box" required />
+                </div>
+                <div  class="search_refer Box_1">
+                    <button  type="submit" class="searchBtn">搜索</button>
+                </div>
+            </div>
+            </form>
+        <div class="rest_choice">
+            <a>高级搜索</a>
+            <a>帮助</a>
+            <a>设置</a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div  class="WB_frame_c" fixed-box="true">
+        <div   class="WB_frame" style="width: 100%;height: 200px; background-color: white" >
+             {% for weibo in findweibo %}
+                   <div class="wb_list">
+                          <div class="wb_item">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ weibo.user.name }}
+                                    </div>
+                                    <div class="wb_item_from">
+                                        今天  来自 iphone 7 Plus
+                                    </div>
+                                    <div class="wb_item_content">
+                                        {{ weibo.text }}
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr/>
+                                <div class="wb_item_bottom">
+                                    <ul>
+                                        <li style="margin-left: 5px" onclick="Keep(this);">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;收藏
+                                        </li>
+                                        <li onclick="Forward(this);">
+                                            <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+                                        </li>
+                                        <li onclick="Comment(this);">
+                                            <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+
+                                        </li>
+                                        <li onclick="Favor(this);">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div  class="WB_frame" style="width: 100%;height: 200px; background-color: white">
+
+
+
+
+                    {% for user in finduser %}
+                       没有 <div class="wb_list">
+                            <div class="wb_item">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ user.name }}
+
+                                    </div>
+                                </div>
+                         </div>
+                    {% endfor %}
+                    这是找到的用户列表
+                </div>
+                </div>
+                </div>
+                </div>
+    </div>
+
+
+
+
+</body>
+{% endblock %}

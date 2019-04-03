@@ -1,0 +1,565 @@
+
+<script>
+function switchTag(tag,content)
+{
+	for(i=1; i <4; i++){
+		if ("tag"+i==tag){
+			document.getElementById(tag).getElementsByTagName("a")[0].className="selectli"+i;
+			document.getElementById(tag).getElementsByTagName("a")[0].getElementsByTagName("span")[0].className="selectspan"+i;
+		}else{
+			document.getElementById("tag"+i).getElementsByTagName("a")[0].className="";
+			document.getElementById("tag"+i).getElementsByTagName("a")[0].getElementsByTagName("span")[0].className="";
+		}
+		if ("content"+i==content){
+			document.getElementById(content).className="";
+		}else{
+			document.getElementById("content"+i).className="hidecontent";
+		}
+		document.getElementById("content").className=content;
+	}
+
+}
+</script>
+
+ {% extends "Layout/_layout.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/home.css">
+    <link rel="stylesheet" href="/static/Commons/Css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/face.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/index.css">
+
+    <style type="text/css">
+        #image-holder img{
+            max-width: 100px;
+            max-width: 100px;
+        }
+    .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }
+    .clearfix {
+        display:block;
+        }
+    .WB_left_nav .item{
+        margin-bottom: 15px;
+
+    }
+    .WB_frame{
+        width: 920px;
+        min-height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .WB_frame_a{
+        width: 100%;
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        font-size: 12px;
+    }
+
+    .PCD_header{
+        height: 300px;
+
+    }
+    .pf_wrap{
+        position: absolute;
+        height: 300px;
+    }
+
+    .cover_wrap{
+        position: absolute;
+        width: 920px;
+        height: 300px;
+        background-image:url(/static/Commons/Images/bj.jpg);
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    .PCD_header .shadow{
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        z-index: 2;
+    }
+    .PCD_header .pf_photo{
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 48px auto 0;
+        padding: 4px;
+        background: #fff;
+        background: rgba(255,255,255,0.3);
+        border-radius: 50%;
+    }
+    .PCD_header .photo_wrap{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .PCD_header .pf_photo .photo{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-top: -12px;
+    }
+    .PCD_header .pf_username{
+
+        margin-top: 6px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 4px rgba(0,0,0,0.5);
+        vertical-align: text-bottom;
+    }
+    .PCD_header .username{
+        font-size: 22px;
+        display: inline;
+    }
+    .icon_pf_female{
+        width: 16px;
+        height: 16px;
+        vertical-align: -2px;
+        background-position: -125px -50px;
+    }
+
+    .icon_pf_male{
+        width: 16px;
+        height: 16px;
+        vertical-align: -2px;
+    }
+    .W_icon{
+        display: inline-block;
+        background-image: url("/static/Commons/Images/icon.png");
+    }
+    .PCD_header .pf_intro{
+        margin-top: 4px;
+        text-align: center;
+        color: #fff;
+        line-height: 18px;
+        text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    }
+    .S_bg2 {
+        background-color: #fff;
+    }
+    .S_line2 {
+        border-color: #f2f2f5;
+    }
+
+    .PCD_tab{
+        min-width: 572px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    }
+    .PCD_tab .tab_wrap {
+        width: 62.174%;
+        height: 40px;
+        margin: 0 auto;
+    }
+    .PCD_tab .tb_tab {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    }
+    .PCD_tab .tb_tab .current .tab_link {
+        font-weight: bold;
+    }
+    .PCD_tab .tb_tab .tab_link {
+        position: relative;
+        display: inline-block;
+        height: 40px;
+        margin: 0 auto;
+        line-height: 38px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .W_input:focus, .S_txt1, .W_btn_b, .SW_fun .S_func1 {
+        color: #333;
+        text-decoration: none;
+    }
+    .PCD_tab .tb_tab .current .tab_link {
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+    }
+    .WB_frame #plc_main {
+        width: 940px;
+
+    }
+    .WB_frame_b {
+        width: 300px;
+        background-color: #ff8140;
+        min-height: 400px;
+        display: inline-block;
+    }
+    .WB_frame_c {
+        width: 600px;
+
+        min-height: 400px;
+        float: right;
+    }
+    .WB_frame_d {
+        width: 600px;
+        background-color:transparent;
+        min-height: 400px;
+        float: right;
+    }
+    .PCD_counter{
+        overflow: hidden;
+    }
+    .WB_cardwrap{
+        background-color: #fff;
+        border: solid 1px gainsboro;
+        height: 60px;
+        width: 298px;
+    }
+    .PCD_counter .tb_counter{
+        width: 100%;
+        margin-left: -1px;
+        line-height: 14px;
+        text-align: center;
+        table-layout: fixed;
+    }
+    .PCD_counter .tb_counter td {
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-color: #d9d9d9;
+    }
+    .PCD_counter .tb_counter td a{
+        display: block;
+    }
+    .PCD_counter .tb_counter td strong {
+        display: block;
+        margin: 2px 0 6px 0;
+        font-family: Tahoma;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .PCD_counter .tb_counter td span{
+        color: #808080;
+        text-decoration: none;
+    }
+    #Pl_Core_UserInfo__8{
+        background-color: #fff;
+        border: solid 1px gainsboro;
+    }
+    .PCD_person_info .verify_area {
+        padding: 0px 16px 0px 16px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+    .PCD_person_info .verify_area .verify .apply_link {
+        height: 28px;
+        line-height: 28px;
+        margin-right: 10px;
+    }
+    .WB_innerwrap {
+        padding: 1px;
+        margin-top: 1px;
+    }
+    .W_icon_level.icon_level_c2 {
+        background-color: #ffb400;
+    }
+    .W_icon_level {
+        width: 25px;
+        line-height: 14px;
+        text-align: center;
+        display: inline-block;
+        background: #a4a4a4;
+        border-radius: 8px;
+        margin: 0 0 0 3px;
+        padding: 0 5px 0 3px;
+    }
+    .tab_box{
+        height: 38px;
+        width: 600px;
+        background-color:fff;
+    }
+    .WB_tab_a .tab_box {
+        width: 100%;
+        height: 38px;
+    }
+    .WB_tab_a .tab_box_c {
+        border-radius: 2px;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2);
+
+    }
+    .hidecontent {display:none;}
+
+    </style>
+{% endblock %}
+
+{% block body %}
+     <div class="content">
+    <div class="WB_frame">
+        <div class="WB_frame_a">
+            <div id="Pl_Official_Headerv6__1">
+               <div class="PCD_header">
+                <div class="pf_wrap">
+                    <div class="cover_wrap">
+                        <div class="shadow">
+                            <div class="pf_photo">
+                                <p class="photo_wrap">
+                                    <a href="javascript:void(0);" action-type="setPhoto" suda-uatrack="key=profile_head&amp;value=head_host">
+                                        <img src="/static/Commons/Images/touxiang.png" class="photo">
+                                    </a>
+
+						        </p>
+                            </div>
+                            <div class="pf_username">
+						        <h1 class="username">{{ username }}</h1>
+                                <span class="icon_bed"><a><i class="W_icon icon_pf_female"></i></a></span>
+						    </div>
+                            <div class="pf_intro">{{ userbrief }}</div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+            <div id="Pl_Official_Nav__2">
+                <div class="PCD_tab S_bg2">
+                    <div class="tab_wrap" style="width:60%">
+                        <table class="tb_tab" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td id="tag1" class="current">
+                                    <a href="#" onclick="switchTag('tag1','content1');" node-type="nav_link" otherhref="#" class="tab_link">
+                                        <span class="S_txt1 t_link">我的主页</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                </td>
+
+                                 <td id="tag2">
+                                    <a bpfilter="page" href="#" onclick="switchTag('tag2','content2')" class="tab_link">
+                                        <span class="S_txt1 t_link">我的粉丝</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                 </td>
+                                 <td id="tag3">
+
+                                    <a bpfilter="page" href="#" onclick="switchTag('tag3','content3')" class="tab_link">
+                                        <span class="S_txt1 t_link">我的关注</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+
+                                </td>
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="plc_main">
+            <div class="WB_frame_b" fixed-box="true">
+                <div class="WB_cardwrap S_bg2">
+                    <div class="PCD_counter">
+                        <div class="WB_innerwrap">
+                        <table class="tb_counter">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ userprofile.follow_list.count }}</a></strong>
+                                            <span>关注</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ userprofile.my_followers.count }}</a></strong>
+                                            <span>粉丝</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ weibos.count }}</a></strong>
+                                            <span>微博</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+                <div id="Pl_Core_UserInfo__8">
+                    <div class="PCD_person_info">
+
+                        <div class="WB_innerwrap">
+                            <div class="m_wrap">
+                                <div class="bars_box">
+                                    <span><p class="icon_bed W_fl" style="padding: 16px;">个人资料</p></span>
+                                        <div class="bar_box S_bg1">
+                                        <div class="bar" style="width:20%"></div>
+                                        </div>
+                                </div>
+						    </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="background-color: #fff; padding: 16px;margin-top: 5px; min-height: 300px;
+                        font-size: 15px;line-height: 30px;margin-bottom: 5px;position: relative;">
+                    <div><span>姓名：{{ userprofile.name }}</span></div>
+                    <div><span>签名：{{ userprofile.brief }}</span></div>
+                    <div><span>性别：{{ userprofile.sex }}</span></div>
+                    <div><span>年龄：{{ userprofile.age }}</span></div>
+                    <div><span>邮箱：{{ userprofile.email }}</span></div>
+
+                </div>
+            </div>
+
+
+
+            <div  class="WB_frame_c" fixed-box="true">
+
+                <div id="content" class="content1">
+
+                <div  id="content1" class="WB_frame_c" style="width: 100%;height: 200px;">
+
+                    {% for weibo in weibos %}
+                        <div class="WB_text clearfix" id="WB_text"> </div>
+                        <div class="wb_list">
+                            <div class="wb_item">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png" class="photo">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ username }}
+                                    </div>
+                                    <div class="wb_item_content">
+                                        {{ weibo.text }}
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr/>
+                                <div class="wb_item_bottom">
+                                    <ul>
+                                        <!--li style="margin-left: 5px" onclick="Keep(this);">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;收藏
+                                        </li-->
+                                        <!--li onclick="Forward(this);">
+                                            <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;
+                                            <em>999</em>
+                                        </li-->
+                                        <li onclick="Comment(this);">
+                                            <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;
+
+                                        </li>
+                                        <li>
+                                            <a type="button" class="searchname"  style="text-align: right" onmouseover="this.style.color='red';" onmouseout="this.style.color='#000000';" href="/del/?webid={{ weibo.id }}">删除</a>
+                                        </li>
+                                        <!--li onclick="Favor(this);">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;
+                                            <em>999</em>
+                                        </li-->
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div></p>
+                    {% endfor %}
+
+                </div>
+                </div>
+
+                <div  id="content2" class="hidecontent" class="WB_frame_d" style="width: 100%;height: 119px;">
+
+
+                       <div class="wb_list">
+                           {% for follow in userprofile.my_followers.all %}
+                            <div class="wb_item" style="height: 119px">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+
+                                        {{ follow.name }}
+
+                                    </div>
+                                    <div class="wb_item_from" style="">
+                                             {{ follow.brief }}
+                                     </div>
+                                    <hr/>
+                                     <div class="wb_item_bottom">
+                                        <u1>
+                                            <li class="fa fa-external-link">
+                                                微博:<a style="padding-left: 10px">{{ follow.weibo_set.count }}</a>
+
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                粉丝:<a style="padding-left: 10px">{{ follow.my_followers.all.count}}</a>
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                关注<a style="padding-left: 10px">{{ follow.follow_list.all.count }}</a>
+                                             </li>
+                                        </u1>
+
+                                     </div>
+
+
+                                </div>
+
+                         </div>
+                    <p></p>
+                {% endfor %}
+                </div>
+                </div>
+
+                <div  id="content3" class="hidecontent" class="WB_frame_d" style="width: 100%;height: 119px; ">
+ <div class="wb_list">
+                    {% for follow in userprofile.follow_list.all %}
+
+                            <div class="wb_item" style="height: 119px">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ follow.name }}
+
+                                    </div>
+                                    <div class="wb_item_from" style="">
+                                             {{ follow.brief }}
+                                     </div>
+                                    <hr/>
+                                     <div class="wb_item_bottom">
+                                        <u1>
+                                            <li class="fa fa-external-link">
+                                                微博:<a style="padding-left: 10px">{{ follow.weibo_set.count }}</a>
+
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                粉丝:<a style="padding-left: 10px">{{ follow.my_followers.all.count}}</a>
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                关注<a style="padding-left: 10px">{{ follow.follow_list.all.count }}</a>
+                                             </li>
+                                        </u1>
+
+                                     </div>
+                                </div>
+
+                         </div>
+                        <p></p>
+{% endfor %}
+                </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     </div>
+{% endblock %}

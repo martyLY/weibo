@@ -1,0 +1,260 @@
+ #image-holder img{
+            max-width: 100px;
+            max-width: 100px;
+        }
+    .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }
+    .clearfix {
+        display:block;
+        }
+    .WB_left_nav .item{
+        margin-bottom: 15px;
+
+    }
+    .WB_frame{
+        width: 920px;
+        min-height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .WB_frame_a{
+        width: 100%;
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        font-size: 12px;
+    }
+
+    .PCD_header{
+        height: 300px;
+
+    }
+    .pf_wrap{
+        position: absolute;
+        height: 300px;
+    }
+
+    .cover_wrap{
+        position: absolute;
+        width: 920px;
+        height: 300px;
+        background-image:url(/static/Commons/Images/bj.jpg);
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    .PCD_header .shadow{
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        z-index: 2;
+    }
+    .PCD_header .pf_photo{
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 48px auto 0;
+        padding: 4px;
+        background: #fff;
+        background: rgba(255,255,255,0.3);
+        border-radius: 50%;
+    }
+    .PCD_header .photo_wrap{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .PCD_header .pf_photo .photo{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-top: -12px;
+    }
+    .PCD_header .pf_username{
+
+        margin-top: 6px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 4px rgba(0,0,0,0.5);
+        vertical-align: text-bottom;
+    }
+    .PCD_header .username{
+        font-size: 22px;
+        display: inline;
+    }
+    .icon_pf_female{
+        width: 16px;
+        height: 16px;
+        vertical-align: -2px;
+        background-position: -125px -50px;
+    }
+
+    .icon_pf_male{
+        width: 16px;
+        height: 16px;
+        vertical-align: -2px;
+    }
+    .W_icon{
+        display: inline-block;
+        background-image: url("/static/Commons/Images/icon.png");
+    }
+    .PCD_header .pf_intro{
+        margin-top: 4px;
+        text-align: center;
+        color: #fff;
+        line-height: 18px;
+        text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    }
+    .S_bg2 {
+        background-color: #fff;
+    }
+    .S_line2 {
+        border-color: #f2f2f5;
+    }
+
+    .PCD_tab{
+        min-width: 572px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    }
+    .PCD_tab .tab_wrap {
+        width: 62.174%;
+        height: 40px;
+        margin: 0 auto;
+    }
+    .PCD_tab .tb_tab {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    }
+    .PCD_tab .tb_tab .current .tab_link {
+        font-weight: bold;
+    }
+    .PCD_tab .tb_tab .tab_link {
+        position: relative;
+        display: inline-block;
+        height: 40px;
+        margin: 0 auto;
+        line-height: 38px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .W_input:focus, .S_txt1, .W_btn_b, .SW_fun .S_func1 {
+        color: #333;
+        text-decoration: none;
+    }
+    .PCD_tab .tb_tab .current .tab_link {
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+    }
+    .WB_frame #plc_main {
+        width: 940px;
+    }
+    .WB_frame_b {
+        width: 300px;
+        background-color: aqua;
+        min-height: 400px;
+        display: inline-block;
+    }
+    .WB_frame_c {
+        width: 600px;
+
+        min-height: 400px;
+        float: right;
+    }
+    .WB_frame_d {
+        width: 600px;
+        background-color:transparent;
+        min-height: 400px;
+        float: right;
+    }
+    .PCD_counter{
+        overflow: hidden;
+    }
+    .WB_cardwrap{
+        background-color: #fff;
+        border: solid 1px gainsboro;
+        height: 60px;
+        width: 298px;
+    }
+    .PCD_counter .tb_counter{
+        width: 100%;
+        margin-left: -1px;
+        line-height: 14px;
+        text-align: center;
+        table-layout: fixed;
+    }
+    .PCD_counter .tb_counter td {
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-color: #d9d9d9;
+    }
+    .PCD_counter .tb_counter td a{
+        display: block;
+    }
+    .PCD_counter .tb_counter td strong {
+        display: block;
+        margin: 2px 0 6px 0;
+        font-family: Tahoma;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .PCD_counter .tb_counter td span{
+        color: #808080;
+        text-decoration: none;
+    }
+    #Pl_Core_UserInfo__8{
+        background-color: #fff;
+        border: solid 1px gainsboro;
+    }
+    .PCD_person_info .verify_area {
+        padding: 0px 16px 0px 16px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+    .PCD_person_info .verify_area .verify .apply_link {
+        height: 28px;
+        line-height: 28px;
+        margin-right: 10px;
+    }
+    .WB_innerwrap {
+        padding: 1px;
+        margin-top: 1px;
+    }
+    .W_icon_level.icon_level_c2 {
+        background-color: #ffb400;
+    }
+    .W_icon_level {
+        width: 25px;
+        line-height: 14px;
+        text-align: center;
+        display: inline-block;
+        background: #a4a4a4;
+        border-radius: 8px;
+        margin: 0 0 0 3px;
+        padding: 0 5px 0 3px;
+    }
+    .tab_box{
+        height: 38px;
+        width: 600px;
+        background-color:fff;
+    }
+    .WB_tab_a .tab_box {
+        width: 100%;
+        height: 38px;
+    }
+    .WB_tab_a .tab_box_c {
+        border-radius: 2px;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2);
+
+    }
+    .hidecontent {display:none;}

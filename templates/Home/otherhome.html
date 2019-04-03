@@ -1,0 +1,361 @@
+
+
+<script >
+function switchTag(tag,content)
+{
+	for(i=1; i <4; i++){
+		if ("tag"+i==tag){
+			document.getElementById(tag).getElementsByTagName("a")[0].className="selectli"+i;
+			document.getElementById(tag).getElementsByTagName("a")[0].getElementsByTagName("span")[0].className="selectspan"+i;
+		}else{
+			document.getElementById("tag"+i).getElementsByTagName("a")[0].className="";
+			document.getElementById("tag"+i).getElementsByTagName("a")[0].getElementsByTagName("span")[0].className="";
+		}
+		if ("content"+i==content){
+			document.getElementById(content).className="";
+		}else{
+			document.getElementById("content"+i).className="hidecontent";
+		}
+		document.getElementById("content").className=content;
+	}
+
+}
+
+</script>
+{% extends "Layout/_layout.html" %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="/static/Commons/Css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/face.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/otherhome.css">
+    <style type="text/css">
+        #image-holder img{
+            max-width: 100px;
+            max-width: 100px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="WB_frame">
+        <div class="WB_frame_a">
+            <div id="Pl_Official_Headerv6__1">
+               <div class="PCD_header">
+                <div class="pf_wrap">
+                    <div class="cover_wrap">
+                        <div class="shadow">
+                            <div class="pf_photo">
+                                <p class="photo_wrap">
+                                    <a href="javascript:void(0);" action-type="setPhoto" title="更换头像" suda-uatrack="key=profile_head&amp;value=head_host">
+                                        <img src="/static/Commons/Images/touxiang.png" alt="姚涵" class="photo">
+                                    </a>
+						        </p>
+                            </div>
+                            <div class="pf_username">
+						        <h1 class="username">{{ username }}</h1>
+                                <span class="icon_bed"><a><i class="W_icon icon_pf_female"></i></a></span>
+						    </div>
+                            <div class="pf_intro" title="brief">{{ userbrief }}
+                            </div>
+                            <div class="pf_intro">
+                                <form action="/otherhome/"  method="POST">
+                                    {% csrf_token %}
+                                             <input type="hidden" name="uid" value="{{ user_id }}">
+                                             <input type="hidden" name="follow_list" value="{{ follow_list }}">
+                                             <input type="hidden" name="my_followers" value="{{ my_followers }}">
+                                            <input type="hidden" id="f" name="f" value="{{ f }}">
+
+                                             <input type="hidden" name="username" value="{{ username}}">
+                                            <input type="hidden" name="curname" value="{{ curname}}">
+                                     <button type="submit"  name="fo"   id="fo" class="button button1" onclick="myFunction2()"><a style="font-size: 20px" id="follow" ></a></button>
+                                    <script>
+                                        function myFunction(){
+                                            var str="";
+                                            if (({{ f }})==1){
+                                                str="已关注√";
+                                            }
+                                            else if(({{ f }})==0){
+                                                str="+ 关注";
+                                            }
+
+                                            return str;
+                                        }
+                                        document.getElementById("follow").innerHTML=myFunction();
+                                        function myFunction2(){
+                                            var fnew=-1
+                                            if (({{ f }})==1){
+                                                fnew = 0;
+                                            }
+                                            else if(({{ f }})==0) {
+                                                fnew = 1;
+                                            }
+                                            return fnew;
+                                        }document.getElementById("f").value=myFunction2();//向隐藏域中赋值
+
+                                    </script>
+
+
+
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+            <div id="Pl_Official_Nav__2">
+                <div class="PCD_tab S_bg2">
+                    <div class="tab_wrap" style="width:60%">
+                        <table class="tb_tab" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td id="tag1" class="current">
+                                    <a href="#" onclick="switchTag('tag1','content1');" node-type="nav_link" otherhref="#" class="tab_link">
+                                        <span class="S_txt1 t_link">TA的主页</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                </td>
+
+                                 <td id="tag2">
+                                    <a bpfilter="page" href="#" onclick="switchTag('tag2','content2')" class="tab_link">
+                                        <span class="S_txt1 t_link">TA的粉丝</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                 </td>
+                                 <td id="tag3">
+
+                                    <a bpfilter="page" href="#" onclick="switchTag('tag3','content3')" class="tab_link">
+                                        <span class="S_txt1 t_link">TA的关注</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+
+                                </td>
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="plc_main">
+            <div class="WB_frame_b" fixed-box="true">
+                <div class="WB_cardwrap S_bg2">
+                    <div class="PCD_counter">
+                        <div class="WB_innerwrap">
+                        <table class="tb_counter">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ follow_list.count }}</a></strong>
+                                            <span>关注</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ my_followers.count }}</a></strong>
+                                            <span>粉丝</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="S_txt1" href="#">
+                                            <strong><a style="padding-left: 10px">{{ weibos.count }}</a></strong>
+                                            <span>微博</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+                <div id="Pl_Core_UserInfo__8">
+                    <div class="PCD_person_info">
+                        <div class="verify_area S_line2">
+                            <p class="verify clearfix" style="margin-top: 5px; margin-bottom: 5px;">
+								<span class="icon_bed W_fl"><a class="apply_link W_fl S_txt1" href="#" >申请认证</a></span>
+								<span class="icon_group S_line1 W_fl">
+                                    <a class="W_icon_level icon_level_c2" title="微博等级8 升级有好礼" href="#" target="_black">
+                                        <span>Lv.8</span>
+                                    </a>&nbsp;</span>
+							</p>
+                            <p class="info"><span></span></p>
+                        </div>
+                        <div class="WB_innerwrap">
+                            <div class="m_wrap">
+                                <div class="bars_box">
+                                    <span><p class="icon_bed W_fl" style="padding: 16px;">个人资料</p></span>
+                                        <div class="bar_box S_bg1">
+                                        <div class="bar" style="width:20%"></div>
+                                        </div>
+                                </div>
+						    </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="background-color: #fff; padding: 16px;margin-top: 5px; min-height: 300px;
+                        font-size: 15px;line-height: 30px;margin-bottom: 5px;position: relative;">
+                    <div><span>姓名：{{ userprofile.name }}</span></div>
+                    <div><span>签名：{{ userprofile.brief }}</span></div>
+                    <div><span>性别：{{ userprofile.sex }}</span></div>
+                    <div><span>年龄：{{ userprofile.age }}</span></div>
+                    <div><span>邮箱：{{ userprofile.email }}</span></div>
+
+                </div>
+            </div>
+
+
+
+            <div  class="WB_frame_c" fixed-box="true">
+
+                <div id="content" class="content1">
+
+                <div  id="content1" class="WB_frame_c" style="width: 100%;height: 200px;">
+
+                    {% for weibo in weibos %}
+                        <div class="WB_text clearfix" id="WB_text"> </div>
+
+                        <div class="wb_list">
+                            <div class="wb_item">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ username }}
+                                    </div>
+                                    <div class="wb_item_from">
+                                        今天  来自 iphone 7 Plus
+                                    </div>
+                                    <div class="wb_item_content">
+                                        {{ weibo.text }}
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr/>
+                                <div class="wb_item_bottom">
+                                    <ul>
+                                        <li style="margin-left: 5px" onclick="Keep(this);">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;收藏
+                                        </li>
+                                        <li onclick="Forward(this);">
+                                            <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+                                        </li>
+                                        <li onclick="Comment(this);">
+                                            <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+
+                                        </li>
+                                        <li onclick="Favor(this);">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;
+                                            <em>0</em>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div></p>
+                    {% endfor %}
+
+                </div>
+                </div>
+                <div  id="content2" class="hidecontent" class="WB_frame_d" style="width: 100%;height: 200px ">
+
+                        <div class="wb_list">
+                             {% for follow in userprofile.my_followers.all %}
+
+                            <div class="wb_item" style="height: 119px">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ follow.name }}
+                                    </div>
+                                    <div class="wb_item_from" style="">
+                                             {{ follow.brief }}
+                                     </div>
+                                    <hr/>
+                                     <div class="wb_item_bottom">
+                                        <u1>
+                                            <li class="fa fa-external-link">
+                                                微博:<a style="padding-left: 10px">{{ follow.weibo_set.count }}</a>
+
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                粉丝:<a style="padding-left: 10px">{{ follow.my_followers.all.count}}</a>
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                关注<a style="padding-left: 10px">{{ follow.follow_list.all.count }}</a>
+                                             </li>
+                                        </u1>
+
+                                     </div>
+                                </div>
+
+                         </div>
+                                <p></p>
+                             {% endfor %}
+                        </div>
+
+
+
+                </div>
+
+                <div  id="content3" class="hidecontent" class="WB_frame_d" style="width: 100%;height: 200px; ">
+<div class="wb_list" >
+                    {% for follow in userprofile.follow_list.all %}
+
+
+                            <div class="wb_item" style="height: 119px">
+                                <div class="wb_face wb_item_float">
+                                    <img src="/static/Commons/Images/touxiang.png">
+                                </div>
+                                <div class="wb_item_detail wb_item_float ">
+                                    <div class="wb_item_info">
+                                        {{ follow.name }}
+
+                                    </div>
+                                    <div class="wb_item_from" style="">
+                                             {{ follow.brief }}
+                                     </div>
+                                    <hr/>
+                                     <div class="wb_item_bottom">
+                                        <u1>
+                                            <li class="fa fa-external-link">
+                                                微博:<a style="padding-left: 10px">{{ follow.weibo_set.count }}</a>
+
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                粉丝:<a style="padding-left: 10px">{{ follow.my_followers.all.count}}</a>
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                关注<a style="padding-left: 10px">{{ follow.follow_list.all.count }}</a>
+                                             </li>
+                                        </u1>
+
+                                     </div>
+                                </div>
+                         </div>
+
+                        <p></p>
+                 {% endfor %}
+</div>
+                </div>
+            </div>
+
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/Commons/Plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/layout.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    {% block css %}
+     .searchIcon {
+      color: #8590a6;
+    }
+    {% endblock %}
+</head>
+
+<body class="FRAME_main" onload="LoadoldWeibo()">
+    <div class="WB_minblog">
+        <div class="head_content">
+            <div class="wb_logo">
+                <a href="/index/"><img src="/static/Commons/Images/WB_logo.png" alt=""></a>
+            </div>
+
+            <div class="wb_menu">
+                <div class="gn_nav">
+                    <ul>
+                        <li>
+                            <a href="/index/">
+                                <span class="ico fa fa-home"></span>
+                                <span>首页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="ico fa fa-compass"></span>
+                                <span>发现</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout/">
+                                <span class="ico fa fa-home"></span>
+                                <span>退出</span>
+                            </a>
+                        </li>
+
+                        <!--li>
+                            <a href="#">
+                                <span class="ico fa fa-gamepad"></span>
+                                <span>游戏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="ico fa fa-home"></span>
+                                <img src="">
+                                <span>话题</span>
+                            </a>
+                        </li-->
+                    </ul>
+                </div>
+                <!--div class="gn_set">
+                    <div class="gn_set_list">
+                        <a href="#">
+                            <span class="fa fa-envelope"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="gn_set_list">
+                        <a href="#">
+                            <span class="fa fa-cog"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="gn_set_list">
+                        <a href="#">
+                            <span class="fa fa-pencil-square"></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div-->
+            </div>
+        </div>
+
+        {% block body %}
+        <div class="WB_frame">
+            <div class="WB_frame_a"></div>
+            <div class="plc_main"></div>
+        </div>
+
+        {% endblock %}
+
+    </div>
+
+    <script type="text/javascript" src="/static/Commons/JavaScript/jquery-2.1.4.min.js"></script>
+    <script>
+
+        // using jQuery
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $(document).ready(function(){
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+        })
+    </script>
+
+    {% block js %}
+        
+    {% endblock %}
+</body>
+
+</html>

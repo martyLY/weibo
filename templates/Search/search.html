@@ -1,0 +1,262 @@
+<style>
+		.S_main{
+            margin: 0;
+            background-image:url(/static/Commons/Images/body_repeat_v6.png)
+        }
+       .logo_img{
+            display: block;
+            background: url(/static/Commons/Images/search_logo.png)no-repeat;
+            width: 239px;
+            height: 70px;
+        }
+        .s_main_head{
+            margin: 0 auto;
+
+            width: 1100px;
+            height: 1000px;
+            position: relative;
+        }
+        .S_main_bg{
+            width: 800px;
+            height: 120px;
+
+
+        }
+        .search_img_class{
+            float: left;
+
+            height: 60px;
+            width: 800px;
+
+        }
+        .search_head_img{
+            float: left;
+            padding: 13px 0 0 3px;
+
+        }
+        .clearfix {
+            display: block;
+        }
+        .search_class{
+            float: left;
+            margin-left: -80px;
+            padding: 13px 0 0 3px;
+
+        }
+        .search_class li a{
+            margin-right: 30px;
+            color: white;
+        }
+        .search_refer_box{
+            float: left;
+            width: 800px;
+            height: 50px;
+
+
+        }
+        .search_refer{
+            float: right;
+        }
+        .input_Box{
+            float: left;
+            width: 700px;
+            height: 30px;
+        }
+
+        .searchBtn{
+            display: block;
+            width: 80px;
+            height: 35px;
+            background: dodgerblue;
+            color: white;
+            text-align: center;
+            line-height: 35px
+        }
+        .rest_choice{
+            height: 120px;
+            width: 280px;
+
+            position:absolute;
+            top: 0;
+            right: 0;
+        }
+        .rest_choice a{
+            float: left;
+            color: white;
+            display: block;
+            margin-left: 15px;
+            line-height: 165px;
+        }
+
+        .searchname{
+            border-style: none;
+            background-color: Transparent;
+            font-size: 14px;
+        }
+
+ </style>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/Commons/Css/index.css">
+    <link rel="stylesheet" href="/static/Commons/Css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/face.css">
+
+    <style type="text/css">
+        #image-holder img{
+            max-width: 100px;
+            max-width: 100px;
+        }
+
+    </style>
+{% endblock %}
+
+   <meta name="save" content="history">
+{% block body %}
+
+<body class="S_main">
+    <div class="s_main_head">
+        <div class="S_main_bg">
+            <div class="search_img_class">
+                <div class="search_head_img">
+                   <a suda-data  ="key=tblog_search_weibo&amp;value=weibo_logo" href="/?Refer=STopic_icon" class="logo_img"></a>
+                </div>
+                <ul class="search_class  clearfix">
+                    <li style="list-style:none;">
+                        <a href="/index/">首页</a>
+                        <a>综合</a>
+                        <a>找人</a>
+                        <a>图片</a>
+                        <a>兴趣部落</a>
+                    </li>
+                </ul>
+            </div>
+            <form action="/search/"  method="POST" >
+                {% csrf_token %}
+                <div class="search_refer_box">
+                    <div  class="search_Box Box_1">
+                        <input type="text" name="text" value="" placeholder={{ text }} class="input_Box" required />
+                    </div>
+                     <input type="hidden" name="uid" value="{{ user.id }}">
+                     <input type="hidden" name="curid" value="{{ curid }}">
+                     <input type="hidden" name="finduser" value="{{ finduser }}">
+
+                     <input type="hidden" name="username" value="{{ username}}">
+                    <div  class="search_refer Box_1">
+                        <button  type="submit" class="searchBtn">搜索</button>
+                    </div>
+                </div>
+            </form>
+            <div class="rest_choice">
+                <a>高级搜索</a>
+                <a>帮助</a>
+                <a>设置</a>
+            </div>
+        </div>
+          <div   class="WB_frame_c" style="width: 100%;height: 119px;"  >
+                    {% for weibo in findweibo %}
+                              <div class="wb_list" >
+                                  <div class="wb_item">
+                                        <div class="wb_face wb_item_float">
+                                            <img src="/static/Commons/Images/touxiang.png">
+                                        </div>
+                                        <div class="wb_item_detail wb_item_float ">
+
+                                         <form action="/search2/"  method="POST" >
+                                        {% csrf_token %}
+                                         <div class="wb_item_info" >
+                                             <input type="hidden" name="uid" value="{{ weibo.user.id }}">
+                                             <input type="hidden" name="curid" value="{{ curid }}">
+                                             <input type="hidden" name="finduser" value="{{ weibo.user.name }}">
+                                             <input type="hidden" name="text" value="{{ text }}">
+                                             <input type="hidden" name="username" value="{{ weibo.user.name}}">
+                                             <button type="submit"  class="searchname" onmouseover="this.style.color='#ff8140';" onmouseout="this.style.color='';">{{ weibo.user.name }}</button>
+                                         </div>
+                                        </form>
+                                            <div class="wb_item_content">
+                                                {{ weibo.text }}
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr/>
+                                        <div class="wb_item_bottom">
+                                            <ul>
+                                                <li style="margin-left: 5px" onclick="Keep(this);">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;收藏
+                                                </li>
+                                                <li onclick="Forward(this);">
+                                                    <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;
+                                                    <em>0</em>
+                                                </li>
+                                                <li onclick="Comment(this);">
+                                                    <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;
+                                                    <em>0</em>
+
+                                                </li>
+                                                <li onclick="Favor(this);">
+                                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;
+                                                    <em>0</em>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                             </div>   <p></p>
+                    {% endfor %}
+
+
+
+
+
+
+
+                <div  class="WB_frame_d" style="width: 100%;height: 119px;background-color: white">
+                    <div class="wb_list" >
+                    {% for user in finduser %}<p>
+
+                                <div class="wb_item" >
+                                     <div class="wb_face wb_item_float" style="background-color: white">
+                                         <img src="/static/Commons/Images/touxiang.png">
+                                     </div>
+
+                                     <div class="wb_item_detail wb_item_float " style="background-color: white">
+                                        <form action="/search2/"  method="POST" >
+                                        {% csrf_token %}
+                                         <div class="wb_item_info" >
+                                             <input type="hidden" name="uid" value="{{ user.id }}">
+                                             <input type="hidden" name="curid" value="{{ curid }}">
+                                             <input type="hidden" name="finduser" value="{{ finduser }}">
+                                             <input type="hidden" name="text" value="{{ text }}">
+                                             <input type="hidden" name="username" value="{{ username}}">
+                                             <button type="submit"  class="searchname" onmouseover="this.style.color='#ff8140';" onmouseout="this.style.color='';">{{ user.name }}</button>
+                                         </div>
+                                        </form>
+                                     <div class="wb_item_from" style="">
+                                             {{ user.brief }}
+                                     </div>
+                                     <hr/>
+                                     <div class="wb_item_bottom">
+                                        <u1>
+                                            <li class="fa fa-external-link">
+                                                微博数:<a style="padding-left: 10px">{{ userweibonum }}</a>
+
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                粉丝数:<a style="padding-left: 10px">{{ user.my_followers.all.count}}</a>
+                                             </li>
+                                            <li class="fa fa-external-link">
+                                                关注数<a style="padding-left: 10px">{{ user.follow_list.all.count }}</a>
+                                             </li>
+                                        </u1>
+
+                                     </div>
+                                 </div>
+                            </div>
+                        </div></p><p></p>
+                  {% endfor %}
+            </div>
+
+        </div>
+
+        </div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "Layout/_layout.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/login.css">
+{% endblock %}
+
+{% block body %}
+<div class="login_ground">
+    <div class="login_main">
+        <div style="margin-top: 15px">
+            <div class="left">
+                <div class="WB_left_nav">
+                    <div class="item">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="WB_frame_c">
+
+                </div>
+                <div class="WB_main_r" style="position:absolute; left:42%; top:25%; " >
+                {% csrf_token %}
+                <div id="pl_unlogin_home_login">
+                    <div class="login_box">
+                        <div class="item1">
+                            <span class="sp_gap"><a href="javascript:void(0);">账号登录</a></span>
+                            <span class="sp_gap"><a href="javascript:void(0);">安全登录</a></span>
+                            <hr>
+                        </div>
+                        <div class="item2">
+                            <div class="">
+
+                                <input type="text" name="user" placeholder="会员帐号" class="input_wrap" id="user">
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <input type="password" name="pass" placeholder="请输入密码" class="input_wrap" id="password">
+                            </div>
+
+                            <input type="checkbox">
+                            <span class="S_txt2">记住我</span>
+                            <a class="S_txt2" href="/forget/" style="margin-left: 62px;">忘记密码?</a>
+                            <a class="S_txt2" href="/register/" style="margin-left: 40px;">新用户点击进行注册</a>
+                            <div class="submit_box">
+                                <a href="javascript:void(0)" onclick="login(this);" methods="POST">
+                                    <div class="submit_box_inner">
+
+                                        <div class="submit_box_inner_in">登录</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="submit_box">
+                                <a href="javascript:void(0)" onclick="login_visit(this);" methods="POST">
+                                    <div class="submit_box_inner">
+
+                                        <div class="submit_box_inner_in">游客</div>
+                                        </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/Commons/JavaScript/jquery.min.js"></script>
+<script>
+    function login(){
+        var user = $("#user").val();
+        var passwd = $("#password").val();
+        var data = {};
+        var flag = '0';
+        data['flag'] = '0';
+        data['user'] = user;
+        data['passwd'] = passwd;
+        var post_data_str = JSON.stringify(data);
+        $.ajax({
+            url: '/login/',
+            type: 'POST',
+            data: {'post_data': post_data_str},
+            dataType: 'json',
+            success: function (arg){
+                if(arg.status){
+                    location.href='/index/'
+                }else {
+                    alert(arg.message);
+                }
+            }
+        });
+    }
+         function login_visit(){
+        var data = {};
+
+        var user = "1";
+        var passwd = "1";
+        var flag = '1';
+        data['flag'] = '1';
+        var post_data_str = JSON.stringify(data);
+        $.ajax({
+            url: '/login/',
+            type: 'POST',
+            data: {'post_data': post_data_str},
+            dataType: 'json',
+            success: function (arg){
+                if(arg.status){
+                    location.href='/visit/'
+                }else {
+                    alert(arg.message);
+                }
+            }
+        });
+    }
+</script>
+
+
+
+{% endblock %}

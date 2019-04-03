@@ -1,0 +1,417 @@
+.hide {
+    display: none;
+}
+.wb_main{
+    height: auto;
+}
+
+.content{
+    width: 1000px;
+    min-height: 1760px;
+    position: relative;
+    margin: 0 auto;
+    top: 48px;
+    background-color: #19110a;
+    background-color: rgba(8,4,1,0.25);;
+}
+.content .left{
+    position: fixed;
+    left: 175px;
+    top: 66px;
+    width: 150px;
+    height: 339px;
+    background: black;
+    opacity: 0.8;
+}
+.content .left .WB_left_nav{
+
+}
+.content .left .WB_left_nav .lev_Box{
+    height: 34px;
+    width: 150px;
+    line-height: 34px;
+    float: left;
+
+}
+.content .left .WB_left_nav .lev_Box a{
+    text-decoration: none;
+    padding-left: 20px;
+    font: 14px 'Arial','Microsoft YaHei';
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.content .center{
+    position: absolute;
+    top: 18px;
+    left: 150px;
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+}
+.content .center .up{
+    height: 165px;
+    background: white;
+    z-index: 100;
+    width: 600px;
+}
+.content .center .up .title_area{
+    position: absolute;
+    left: 18px;
+    height: 30px;
+    width: 568px;
+}
+.content .center .up .title_area p{
+    position: absolute;
+    width: 196px;
+    height: 30px;
+    top: 0;
+    margin-top: 0;
+    line-height: 30px;
+}
+.content .center .up .title_area .num{
+    float: right;
+    width: 192px;
+    height: 30px;
+    line-height: 30px;
+}
+.content .center .up .WB_input{
+    top: 30px;
+    left: 7px;
+    position: absolute;
+    height: 80px;
+    width: 580px;
+    border: 1px solid red;
+}
+.content .center .W_input{ 
+    position: absolute;
+    top: 5px; 
+    left: 5px; 
+    height: 68px; 
+    width: 568px;
+}
+.content .center .up .kind{
+    position: absolute;
+    top: 115px;
+    float: left;
+    height: 35px;
+    width: 380px;;
+}
+.content .center .up .kind a{
+    float: left;
+    padding-left: 15px;
+    font-size: 12px;
+    line-height: 46px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.content .center .up .func{
+    position: absolute;
+    top: 115px;
+    left: 390px;
+    float: right;
+    height: 35px;
+    width: 200px;
+}
+.content .center .up .func .limits{
+    right: 100px;
+    line-height: 46px;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+}
+.layer_menu_list {
+    /*position: absolute;*/
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 2px;
+    box-shadow: 0 2px 8px 1px;
+    width: 111px;
+    height: 129px;
+}
+.layer_menu_list ul {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    list-style: none;
+}
+.layer_menu_list ul  li a{
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+    font: 14px 'Arial','Microsoft YaHei';
+}
+.content .center .up .func .W_btn_s{
+    position: absolute;
+    right: 0;
+    width: 82px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #eb7350;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    top: 4px;
+}
+.content .center .WB_text{
+    background-color: white;
+    height: auto;
+    width: 600px;
+}
+.content .center .WB_cardwrap{
+    height: 39px;
+    width: 600px;
+    border: 1px solid blue;
+    margin-top: 10px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+.content .center .WB_text .txt{
+    height: 200px;
+    width: 600px;
+    border: 1px solid red;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+.content .right{
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    width: 230px;
+}
+.content .right .up{
+    height: 75px;
+    background-image: url('/static/Commons/Images/bz.jpg');
+}
+.content .right .up .headpic {
+    width: 60px;
+    bottom: 75px;
+    left: 50%;
+    margin-left: -36px;
+    background: rgba(255,255,255,0.3);
+    /*padding: 3px;*/
+    height: 60px;
+    position: absolute;
+    border-radius: 50%;
+}
+.content .right .up .headpic .W_face_radius {
+    border-radius: 50%;
+}
+.content .right .down{
+    float: right;
+    height: 90px;
+    background: white;
+    width: 230px;
+}
+.content .right .down .nameBox{
+    width: 198px;
+    padding-top: 5px;
+    line-height: 16px;
+    height: 16px;
+    margin: 15px 48px;
+}
+.content .right .down .nameBox a{
+    display: inline-block;
+    float: left;
+    text-decoration: none;
+}
+.content .right .down .nameBox .name{
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+.content .right .down .nameBox .W_icon{
+    display: inline-block;
+    background-image: url("/static/Commons/Images/icon.png");
+    background-repeat: no-repeat;
+}
+.content .right .down .nameBox .icon_member_dis{
+    width: 14px;
+    height: 14px;
+    margin-left: 3px;
+    background-position: 0px -175px;
+} 
+
+.content .right .down .nameBox .W_icon_level{
+    width: 25px;
+    height: 14px;
+    vertical-align: middle;
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    background: #a4a4a4;
+    border-radius: 8px;
+    margin: 0 0 0 3px;
+    padding: 0 5px 0 3px;
+}
+.content .right .down .nameBox .W_icon_level span{
+    font-size: 12px;
+    color: #fff;
+    font-style: italic;
+    letter-spacing: -0.1em;
+}
+.content .right .down .nameBox .icon_level_c2{
+    background-color: #ffb400;
+}
+.content .right .down .nameBox .W_icon_level .txt_out{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 2px 0 1px;
+    z-index: 10;
+    overflow: hidden;
+}
+.content .right .down .nameBox .W_icon_level .txt_in{
+    display: block;
+    height: 28px;
+}
+.content .right .down .nameBox .txt_in span{
+    display: block;
+    font-family: Arial;
+}
+.content .right .down ul{
+    width: 198px;
+    height: 34px;
+    padding: 0px 10px;
+    margin-top: -10px;
+}
+.content .right .down ul li{
+    list-style: none;
+    height: 33px;
+    width: 65px;
+    float: left;
+    text-align: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+.content .right .down ul a{
+    text-decoration: none;
+}
+.content .right .down ul a strong{
+    display: block;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    line-height: 18px;
+    width: 65px;
+    overflow: hidden;
+}
+.content .right .down ul a span{
+    font-size: 12px;
+    color: #808080;
+}
+
+.wb_item{
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+.wb_face{
+    width: 15%;
+}
+.wb_face img{
+  margin-left: 15px;
+  margin-top: 15px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+
+}
+
+.wb_item_float{
+  float: left;
+}
+.wb_item_detail{
+  margin-top: 15px;
+  float: left;
+  margin-left: -20px;
+  width: 82%;
+
+
+}
+.wb_item_info{
+  font-size: 15px;
+  font-weight: bold;
+}
+.wb_item_from{
+  margin-top: 5px;
+
+  font-size: 12px;
+  color: darkgrey;
+}
+
+.wb_item_content{
+    margin-top: 5px;
+    letter-spacing:0.7px
+}
+
+.wb_item_bottom ul{
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+.wb_item_bottom li{
+    border-right: 1px solid #808080;;
+    display: inline-block;
+    padding-right: 40px;
+    margin-left: 28px;;;
+}
+#image-holder img{
+            max-width: 100px;
+            max-width: 100px;
+        }
+
+
+.head_content{
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    position: fixed;
+    height: 48px;
+    z-index: 1100;
+}
+    .head_content .wb_logo{
+    position: absolute;
+    left: 60px;
+    top: 8px;
+    height: 48px;
+    width: 190px;
+    cursor: pointer;
+    z-index: 1200;
+}
+    .head_content .wb_search {
+    position: absolute;
+    bottom: 0;
+    left: 180px;
+    height: 48px;
+    width: 460px;
+        z-index: 1200;
+}
+
+.head_content .wb_menu {
+    height: 48px;
+    width: 580px;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    z-index: 1100;
+}
+.next_page_xiao{
+    text-align:center;
+    z-index: inherit;
+}

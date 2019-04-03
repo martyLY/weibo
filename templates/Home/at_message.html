@@ -1,0 +1,49 @@
+{% extends "Layout/_layout.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/Commons/Css/login.css">
+{% endblock %}
+
+{% block body %}
+<div class="login_ground">
+    <div class="login_main">
+        <div style="margin-top: 15px">
+            <div class="left">
+                <div class="WB_left_nav">
+                    <div class="item">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="WB_frame_c">
+
+                </div>
+                <div class="WB_main_r" style="position:absolute; left:42%; top:25%; " >
+                {% csrf_token %}
+                <div id="pl_unlogin_home_login">
+                    <p class="login_box">
+                        <div class="item1">
+                            <span class="sp_gap"><a href="javascript:void(0);">消   息   提   示</a></span>
+                            <hr>
+                        </div>
+                        <p>
+                          {{msg}}
+                            </p>
+
+                        </div>
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/Commons/JavaScript/jquery.min.js"></script>
+{% endblock %}
